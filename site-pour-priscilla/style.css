@@ -1,0 +1,268 @@
+:root {
+  --blush: #f7e3e9;
+  --cream: #fdf7f2;
+  --rose: #b5637a;
+  --rose-deep: #8e4a5f;
+  --gold: #c9a86a;
+  --ink: #4a3540;
+  --ink-soft: #7a6570;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Nunito Sans', 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+section {
+  padding: 6rem 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ---------- Photo background ---------- */
+
+.photo-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.photo-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  background-color: var(--blush);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 12px 30px -10px rgba(142, 74, 95, 0.35);
+  opacity: 0.9;
+}
+
+.photo-square.missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-square.missing::after {
+  content: '♡';
+  color: var(--rose);
+  font-size: 1.6rem;
+  opacity: 0.7;
+}
+
+.bg-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgba(253, 247, 242, 0.4);
+  pointer-events: none;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  max-width: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  position: relative;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--rose);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  color: var(--rose-deep);
+  line-height: 1.15;
+  text-shadow: 0 2px 24px var(--cream), 0 0 8px var(--cream);
+}
+
+.counter {
+  margin-top: 1.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  text-shadow: 0 2px 16px var(--cream), 0 0 6px var(--cream);
+}
+
+.scroll-cue {
+  margin: 3rem auto 0;
+  width: 22px;
+  height: 34px;
+  border: 2px solid var(--rose);
+  border-radius: 12px;
+  opacity: 0.6;
+  position: relative;
+}
+
+.scroll-cue span {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  background: var(--rose);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: scroll-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll-dot {
+  0% { opacity: 1; top: 6px; }
+  100% { opacity: 0; top: 18px; }
+}
+
+/* ---------- Reveal on scroll ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Letter ---------- */
+
+.letter-card {
+  background: #fff;
+  border-radius: 4px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 20px 60px -20px rgba(142, 74, 95, 0.25);
+  border-top: 3px solid var(--gold);
+}
+
+.letter-card p {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin-bottom: 1.4rem;
+}
+
+.letter-card p:first-child {
+  font-style: italic;
+  color: var(--rose-deep);
+}
+
+.letter-card .signoff {
+  font-style: italic;
+  color: var(--rose-deep);
+  margin-bottom: 0;
+}
+
+/* ---------- Promises ---------- */
+
+.promises h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--rose-deep);
+  margin-bottom: 2.5rem;
+  text-shadow: 0 2px 20px var(--cream), 0 0 8px var(--cream);
+}
+
+.promise-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.promise-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 12px 30px -18px rgba(142, 74, 95, 0.3);
+}
+
+.promise-icon {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.promise-card h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--rose-deep);
+  margin-bottom: 0.6rem;
+}
+
+.promise-card p {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Signature ---------- */
+
+.signature {
+  text-align: center;
+  padding-bottom: 8rem;
+}
+
+.signature-line {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  text-shadow: 0 2px 16px var(--cream), 0 0 6px var(--cream);
+}
+
+.signature-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 2.2rem;
+  color: var(--rose-deep);
+  margin-top: 0.5rem;
+  text-shadow: 0 2px 20px var(--cream), 0 0 8px var(--cream);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 560px) {
+  section { padding: 4rem 1.25rem; }
+  .letter-card { padding: 2rem 1.5rem; }
+  .letter-card p { font-size: 1.1rem; }
+  .promise-grid { grid-template-columns: 1fr; }
+}
