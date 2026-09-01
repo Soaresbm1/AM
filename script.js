@@ -50,11 +50,11 @@
     container.appendChild(el);
 
     assignRandomPhoto(el);
-    if (!prefersReducedMotion) scheduleRotation(el);
+    scheduleRotation(el);
 
     const maxX = Math.max(window.innerWidth - size, 0);
     const maxY = Math.max(window.innerHeight - size, 0);
-    const speed = randomBetween(18, 34);
+    const speed = randomBetween(18, 34) * (prefersReducedMotion ? 0.2 : 1);
     const angle = randomBetween(0, Math.PI * 2);
 
     squares.push({
@@ -69,12 +69,10 @@
 
   function paint() {
     squares.forEach((s) => {
-      s.el.style.transform = `translate(${s.x}px, ${s.y}px)`;
+      s.el.style.transform = `translate3d(${s.x}px, ${s.y}px, 0)`;
     });
   }
   paint();
-
-  if (prefersReducedMotion) return;
 
   let lastTime = performance.now();
 

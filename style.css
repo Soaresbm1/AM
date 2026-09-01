@@ -53,6 +53,7 @@ section {
   background-position: center;
   box-shadow: 0 12px 30px -10px rgba(142, 74, 95, 0.35);
   opacity: 0.9;
+  will-change: transform;
 }
 
 .photo-square.missing {
